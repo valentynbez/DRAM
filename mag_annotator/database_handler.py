@@ -1,5 +1,5 @@
 from os import path, remove, getenv
-from pkg_resources import resource_filename
+from importlib.resources import files
 import json
 import gzip
 import logging
@@ -51,7 +51,7 @@ def get_config_loc():
     if loc:
         return loc
     else:
-        return path.abspath(resource_filename("mag_annotator", "CONFIG"))
+        return path.abspath(files("mag_annotator") / "CONFIG")
 
 
 def clear_dict(val):
